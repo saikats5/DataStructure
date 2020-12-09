@@ -1,0 +1,132 @@
+//https://visualgo.net/en
+
+- no of operations irrespective of time and space
+- talk about wrost case scenario
+
+// 3 operations irrespective of n - O(1)
+function addUpTo(n){
+    return n * (n + 1) / 2
+}
+
+// n operations - O(n) - number of operations is (eventually) bounded by a multiple of n(say, 10n)
+function addUpTo(n){
+    let total = 0;
+    for(let i = 1; i <= n; i++){
+        total += i;
+    }
+    return total;
+}
+
+- the relationship between the input size and then the time relative to that input
+
+// O(n)
+function countUpandDown(n){
+    for(let i = 0; i < n; i++){
+        console.log(i)
+    }
+    for(let j = n - 1; j >= 0; j--){
+        console.log(j)
+    }
+}
+
+//O(n) operation inside of an O(n) operation O(n2) - O(n * n)
+function printAllPairs(n){
+    for(var i = 0; i < n; i++){
+        for(var j = 0; j < n; j++){
+            console.log(i, j);    
+        }   
+    }
+}
+
+O(2n) -> O(n)
+O(500) -> O(1)
+O(13n2) -> O(n2)
+O(n + 10) -> O(n)
+O(1000n + 50) -> O(n)
+O(n2 + 5n + 8) -> 0(n2)
+
+//O(n)
+function logAtLeast5(n){
+    for(var i = 1; i <= Math.max(5, n); i++){
+        console.log(i)
+    }
+}
+
+//O(1)
+function logAtMost5(n){
+    for(var i = 1; i <= Math.min(5, n); i++){
+        console.log(i)
+    }
+}
+
+time complexity takes operations for consideration
+space complexity takes variables for consideration
+Time Complexity/Space Complexity(Auxiliary space complexity - space taken by the algorithm not the input(n))
+
+- most primitives(booleans, numbers, undefined, null) are constant space
+- strings require O(n) space (where n is the string length)
+- reference types are generally O(n), where n is the length (for arrays) or the number of keys(for objects)
+
+
+// O(1) total and i are 2 variables which are constant
+function addUpTo(n){
+    let total = 0;
+    for(let i = 1; i <= n; i++){
+        total += i;
+    }
+    return total;
+}
+
+// O(n) newArr array size increases w.r.t arr
+function double(arr){
+    let newArr = [];
+    for(let i = 0; i < arr.length; i++){
+        newArr.push(2 * arr[i]);
+    }
+    return newArr;
+}
+
+Objects - unordered key value pairs (when to use - when you need fast access / insertion and removal)
+Big O of objects
+Insertion - O(1)
+Removal - O(1)
+Searching - O(n)
+Access - O (1)
+
+Object.keys(objname)
+Object.entries(objname)
+objname.hasOwnProperty('firstname')
+
+Arrays - ordered list(when to use - when you need order)
+Insertion - it depends where we are inserting/removing
+Removal - it depends where we are inserting/removing
+Searching - O(n)
+Access - O (1)
+
+time complexity for adding/removing item at the end is constant as it just require change in one item but for adding/removing item at the beginning is difficult
+as it requires the following index to change so push/pop is faster that shift/unshift
+
+push - O(1)
+pop - O(1)
+shift - O(n)
+unshift - O(n)
+concat - O(n)
+slice - O(n)
+splice - O(n)
+sort - O(n * log n)
+forEach/map/filter/reduce/etc - O(n)
+
+logarithm is the inverse of exponentiation
+
+log2(8) = 3              ------> 2^3 = 8
+log2(value) = exponent   ------> 2^exponent = value
+
+omit 2 for Big O
+log === log2
+
+log 2 should be less than or equal to 2
+8 - 4 - 2 - 1
+/2  /2  /2
+
+25 - 12.5 - 6.25 - 3.125 - 1.5625 - 0.78125
+/2   /2     /2     /2      /2

@@ -1,0 +1,66 @@
+A process (a function in our case) that calls itself
+
+Call Stack
+base case - the condition when the recursion ends
+2 essential parts of a recursive function -> base case, different input
+
+function countDown(num){
+    if(num <= 0){
+        console.log('all done');
+        return;
+    }
+    console.log(num);
+    num--;
+    countDown(num);
+}
+
+function sumRange(num){
+    if(num === 1) return 1;
+    return num + sumRange(num -1);
+}
+
+factorial
+4! -> 4 * 3 * 2 * 1
+
+function factorial(num){
+    let total = 1;
+    for(let i = num; i > 0; i--){
+        total *= i
+    }
+    return total;
+}
+
+function factorial(num){
+    if(num === 1) return 1;
+    return num * factorial(num - 1);
+}
+
+Things go wrong
+- no base case
+- forgetting to return or returning the wrong Thing
+- stackoverflow
+
+helper method recursion
+function outer(input){
+    var outerScopedVariable = []
+    function helper(helperInput){
+        helper(helperInput--)
+    }
+    helper(input)
+    return outerScopedVariable;
+}
+
+function collectOddValues(arr){
+    let result = [];
+    function helper(helperInput){
+        if(helperInput === 0){
+            return
+        }
+        if(helperInput[0] % 2 !== 0){
+            result.push(helperInput[0])
+        }
+        helper(helperInput.slice(1))
+    }
+    helper(arr)
+    return result;
+}

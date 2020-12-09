@@ -1,0 +1,60 @@
+Sorting is the process of rearranging the items in a collection(e.g., an array) so that the items are in some kind of order
+
+javascript sort - a, b are comparator
+//ascending
+- if it returns a negative number, a should come before b
+- if it returns a positive number, a should come after b
+- if it returns 0, a and b are same
+
+Bubblesort
+- a sorting algorithm where the largest values bubble up to the top
+- compare two values and swap, one after the other in this way we have to corner the largest value at the end and omit it from comparing from the next time
+
+2 ways of swapping
+//ES5
+function swap(arr, idx1, idx2){
+    var temp = arr[idx1];
+    arr[idx1] = arr[idx2];
+    arr[idx2] = temp;
+}
+
+ES2015
+const swap = (arr, idx1, idx2){
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+}
+
+function bubbleSort(arr){
+    for(var i = arr.length; i > 0; i--){
+        for(var j = 0; j < i - 1; j++){
+            if(arr[j] > arr[j+1]){
+                var temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+bubbleSort(37, 45, 29, 8, 12, 88, -3)
+
+even if the bubble sort gets sorted still it will follow all steps, so to optimize it, we just have to iterate 1 extra loop
+
+function bubbleSort(arr){
+    var noSwaps;
+    for(var i = arr.length; i > 0; i--){
+        noSwaps = true;
+        for(var j = 0; j < i - 1; j++){
+            if(arr[j] > arr[j+1]){
+                var temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                noSwaps = false;
+            }
+        }
+        if(noSwaps) break;
+    }
+    return arr;
+}
+bubbleSort(37, 45, 29, 8, 12, 88, -3)
+
+//time complexity is O(n^2) as it has nested loop and this is for worst case scenario, if we use the optimized version then the best case could be O(n)
